@@ -1,0 +1,7 @@
+name: MCW
+version: ${project.version}
+main: com.cragon.mcw.MCW
+api-version: 1.13
+authors: [CraftyDragon678]
+description: Skill
+website: https://github.com/CraftyDragon678

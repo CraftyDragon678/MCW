@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MCW">
+    <output-path>$USER_HOME$/Desktop/MCSV/■■■■플러그인 개발 용/MCW/plugins</output-path>
+    <root id="archive" name="MCW.jar">
+      <element id="module-output" name="MCW" />
+    </root>
+  </artifact>
+</component>
