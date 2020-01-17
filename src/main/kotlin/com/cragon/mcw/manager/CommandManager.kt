@@ -7,7 +7,7 @@ import org.bukkit.entity.Player
 
 class CommandManager : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
-        /*if (sender is Player) {
+        if (sender is Player) {
             if (args[0].equals("skill", ignoreCase = true)) {
                 if (args[1].equals("get", ignoreCase = true)) {
                     try {
@@ -23,7 +23,7 @@ class CommandManager : CommandExecutor {
                 } else if (args[1].equals("give", ignoreCase = true)) {
                 }
             }
-        }*/
+        }
         return true
     }
 }
