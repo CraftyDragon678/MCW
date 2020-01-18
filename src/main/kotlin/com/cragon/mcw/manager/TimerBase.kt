@@ -46,7 +46,12 @@ abstract class TimerBase {
     }
     public final fun startTimer(maxCount_: Int, reverse_: Boolean = false, period: Int = 1000) {
         this.timer = Timer()
-        this.timer!!.schedule(CustomTimerTask(this, null), 0, period as Long)
+        this.timer!!.schedule(CustomTimerTask(this, null), 0, period.toLong())
+        this.running = true
+        setTimerData(maxCount_, reverse_)
+        this.count = if (reverse_) maxCount_ else 0
+        this.inf = maxCount_ == -1
+        eventStartTimer()
     }
     public final fun endTimer() {
         stopTimer()
