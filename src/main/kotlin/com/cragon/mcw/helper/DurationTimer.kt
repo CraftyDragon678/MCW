@@ -13,7 +13,7 @@ public final class DurationTimer(val sb: SkillBase, val ctimer: CoolDownTimer) :
 
     override fun eventEndTimer() {
         sb.durationEnd()
-        ctimer.startTimer(sb.coolTime, false)
+        ctimer.startTimer(sb.coolDown, false)
     }
 
     override fun finalEventEndTimer() {
