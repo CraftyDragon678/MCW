@@ -35,9 +35,9 @@ abstract class TimerBase {
 
     }
 
-    public abstract fun eventEndTimer()
-    public abstract fun eventRunningTimer(i: Int)
     public abstract fun eventStartTimer()
+    public abstract fun eventRunningTimer(i: Int)
+    public abstract fun eventEndTimer()
     public fun finalEventEndTimer() {}
 
     public final fun setTimerData(maxCount_: Int, reverse_: Boolean) {
