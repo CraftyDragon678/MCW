@@ -1,5 +1,5 @@
 name: MCW
-version: 1.0-SNAPSHOT
+version: ${project.version}
 main: com.cragon.mcw.MCW
 api-version: 1.13
 authors: [CraftyDragon678]
