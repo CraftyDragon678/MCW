@@ -13,6 +13,12 @@ abstract class SkillBase {
 
     abstract fun execute(_e: Event?, idx: Int)
 
+    public fun coolDownStart() {}
+    public fun coolDownEnd() {}
+    public fun durationStart() {}
+    public fun durationEnd() {}
+    public fun finalDurationEnd() {}
+
     protected fun initSkill(skillName: String, item: Material, vararg manual: String) {
         this.skillName = skillName
         this.manual = manual.asList()
