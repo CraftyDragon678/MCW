@@ -13,8 +13,7 @@ class CommandManager : CommandExecutor {
                     try {
                         when (args[2].toInt()) {
                             1 -> sender.inventory.addItem(SkillManager.skill1.skillItem)
-                            2 -> {
-                            }
+                            2 -> sender.inventory.addItem(SkillManager.skill2.skillItem)
                             else -> {
                             }
                         }
