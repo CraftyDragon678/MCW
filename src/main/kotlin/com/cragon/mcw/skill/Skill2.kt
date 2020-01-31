@@ -37,6 +37,8 @@ class Skill2 : SkillBase() {
                     val b = p.world.spawnFallingBlock(l, Material.STONE.createBlockData())
                     b.setGravity(true)
                     b.velocity = v
+                    b.dropItem = false
+                    b.setHurtEntities(true)
                     fallingBlockList.add(b)
                     Bukkit.getScheduler().scheduleSyncDelayedTask(main, {
                         b.remove()
