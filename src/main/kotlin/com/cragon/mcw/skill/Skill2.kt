@@ -21,7 +21,7 @@ class Skill2 : SkillBase() {
                 "${ChatColor.BLUE}블럭을 날립니다.", "${ChatColor.BLUE}우클릭시 발동합니다.")
 
         EventManager.onInteractHandler.add(EventData(this, 1))
-        EventManager.onFallingBlockChangeHandler.add(EventData(this, 2)) // if want to remove explosion sound uncomment this
+        EventManager.onFallingBlockChangeHandler.add(EventData(this, 2))
     }
 
     override fun execute(_e: Event?, idx: Int) {
@@ -47,6 +47,8 @@ class Skill2 : SkillBase() {
                 val e = _e as EntityChangeBlockEvent
                 if (fallingBlockList.contains(e.entity)) {
                     e.isCancelled = true
+                    fallingBlockList.remove(e.entity)
+                    e.entity.remove()
                 }
             }
         }
