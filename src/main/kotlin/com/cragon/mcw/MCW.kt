@@ -10,7 +10,6 @@ import org.bukkit.plugin.java.JavaPlugin
 class MCW: JavaPlugin() {
     override fun onEnable() {
         getCommand("mcw")!!.setExecutor(CommandManager())
-        SkillManager()
         SkillBase.initSkillBase(this)
         Bukkit.getPluginManager().registerEvents(EventManager(), this)
     }
