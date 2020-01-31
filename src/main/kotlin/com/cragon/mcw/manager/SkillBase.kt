@@ -35,6 +35,5 @@ abstract class SkillBase {
         fun initSkillBase(main: MCW) {
             SkillBase.main = main
         }
-
     }
 }
