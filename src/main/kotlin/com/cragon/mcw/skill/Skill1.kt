@@ -9,16 +9,15 @@ import org.bukkit.Material
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Fireball
 import org.bukkit.event.Event
-import org.bukkit.event.entity.ExplosionPrimeEvent
 import org.bukkit.event.player.PlayerInteractEvent
 
 class Skill1 : SkillBase() {
+    private val fireballList = ArrayList<Fireball>()
     init {
         initSkill(ChatColor.YELLOW.toString() + "skill_1", Material.YELLOW_DYE,
-                ChatColor.BLUE.toString() + "화염구를 날립니다.", ChatColor.BLUE.toString() + "우클릭시 발동합니다.")
+                "${ChatColor.BLUE}화염구를 날립니다.", "${ChatColor.BLUE}우클릭시 발동합니다.")
 
         EventManager.onInteractHandler.add(EventData(this, 1))
-        EventManager.onExplosionPrimeHandler.add(EventData(this, 2))
     }
 
     override fun execute(_e: Event?, idx: Int) {
@@ -28,22 +27,21 @@ class Skill1 : SkillBase() {
                 val p = e.player
                 if (p.inventory.itemInMainHand == skillItem) {
 
-                    val l = p.location
+                    val l = p.eyeLocation
                     val v = l.direction
 
                     val f: Fireball = p.world.spawnEntity(l, EntityType.FIREBALL) as Fireball
-                    f.setGravity(false)
+                    f.setGravity(true)
                     f.velocity = v
+                    f.setIsIncendiary(false)
+                    f.yield = 0f
+                    fireballList.add(f)
                     Bukkit.getScheduler().scheduleSyncDelayedTask(main, {
-                        f.remove()
+                        if (fireballList.contains(f)) {
+                            f.remove()
+                            fireballList.remove(f)
+                        }
                     }, 20L * 10)
-                }
-            }
-            2 -> {
-                val e = _e as ExplosionPrimeEvent
-                if (e.entity is Fireball) {
-                    e.fire = false
-                    e.isCancelled = true
                 }
             }
         }
