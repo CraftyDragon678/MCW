@@ -8,7 +8,11 @@ import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
 class MCW: JavaPlugin() {
+    companion object {
+        lateinit var instance: MCW
+    }
     override fun onEnable() {
+        instance = this
         getCommand("mcw")!!.setExecutor(CommandManager())
         SkillBase.initSkillBase(this)
         Bukkit.getPluginManager().registerEvents(EventManager(), this)
