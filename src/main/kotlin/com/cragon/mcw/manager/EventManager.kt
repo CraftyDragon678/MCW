@@ -1,5 +1,6 @@
 package com.cragon.mcw.manager
 
+import com.cragon.mcw.MCW
 import com.cragon.mcw.helper.EventData
 import org.bukkit.Bukkit
 import org.bukkit.event.Event
@@ -17,6 +18,14 @@ class EventManager : Listener {
         var onInteractHandler = ArrayList<EventData>()
         var onExplosionPrimeHandler = ArrayList<EventData>()
         var onFallingBlockChangeHandler = ArrayList<EventData>()
+
+        var tickHandler = ArrayList<EventData>()
+    }
+
+    init {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(MCW.instance, {
+            eventExecutor(tickHandler, null)
+        }, 1L, 1L)
     }
 
     @EventHandler
