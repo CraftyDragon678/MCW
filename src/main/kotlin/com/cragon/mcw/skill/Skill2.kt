@@ -14,7 +14,7 @@ import org.bukkit.event.entity.ExplosionPrimeEvent
 import org.bukkit.event.player.PlayerInteractEvent
 
 class Skill2 : SkillBase() {
-    private val fallingBlockList = ArrayList<FallingBlock>()
+    private val fallingBlockList = HashMap<FallingBlock, Player>()
     init {
         initSkill(ChatColor.YELLOW.toString() + "skill_2", Material.YELLOW_DYE,
                 "${ChatColor.BLUE}블럭을 날립니다.", "${ChatColor.BLUE}우클릭시 발동합니다.")
@@ -39,7 +39,7 @@ class Skill2 : SkillBase() {
                     b.velocity = v
                     b.dropItem = false
                     b.setHurtEntities(true)
-                    fallingBlockList.add(b)
+                    fallingBlockList[b] = p
                     Bukkit.getScheduler().scheduleSyncDelayedTask(main, {
                         b.remove()
                     }, 20L * 10)
