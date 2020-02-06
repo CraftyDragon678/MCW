@@ -3,12 +3,11 @@ package com.cragon.mcw.skill
 import com.cragon.mcw.helper.EventData
 import com.cragon.mcw.manager.EventManager
 import com.cragon.mcw.manager.SkillBase
-import org.bukkit.Bukkit
-import org.bukkit.ChatColor
-import org.bukkit.Material
+import org.bukkit.*
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.FallingBlock
 import org.bukkit.entity.Fireball
+import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import org.bukkit.event.entity.EntityChangeBlockEvent
 import org.bukkit.event.entity.ExplosionPrimeEvent
@@ -22,6 +21,7 @@ class Skill2 : SkillBase() {
 
         EventManager.onInteractHandler.add(EventData(this, 1))
         EventManager.onFallingBlockChangeHandler.add(EventData(this, 2))
+        EventManager.tickHandler.add(EventData(this, 3))
     }
 
     override fun execute(_e: Event?, idx: Int) {
@@ -52,6 +52,8 @@ class Skill2 : SkillBase() {
                     fallingBlockList.remove(e.entity)
                     e.entity.remove()
                 }
+            }
+            3 -> {
             }
         }
     }
