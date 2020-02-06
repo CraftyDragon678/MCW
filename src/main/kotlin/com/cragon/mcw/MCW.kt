@@ -15,6 +15,7 @@ class MCW: JavaPlugin() {
         instance = this
         getCommand("mcw")!!.setExecutor(CommandManager())
         SkillBase.initSkillBase(this)
+        SkillManager
         Bukkit.getPluginManager().registerEvents(EventManager(), this)
     }
 
