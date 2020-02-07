@@ -56,10 +56,13 @@ class Skill2 : SkillBase() {
             3 -> {
                 fallingBlockList.forEach { (t, u) ->
                     t.world.getNearbyEntities(t.location, 1.5, 1.5, 1.5).let {
-                        if (it.isNotEmpty()) {
-                            // it.toList()[0]
-                            u.playSound(u.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.MASTER, 1f, 1f)
+                        it.forEach entityLoop@ { entity ->
+                            if (entity !is FallingBlock && entity != u) {
+                                u.playSound(u.location, Sound.ENTITY_ARROW_HIT_PLAYER, SoundCategory.MASTER, 1f, 1f)
+                                return@entityLoop
+                            }
                         }
+
                     }
                 }
             }
