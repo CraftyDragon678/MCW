@@ -4,10 +4,7 @@ import com.cragon.mcw.helper.EventData
 import com.cragon.mcw.manager.EventManager
 import com.cragon.mcw.manager.SkillBase
 import org.bukkit.*
-import org.bukkit.entity.EntityType
-import org.bukkit.entity.FallingBlock
-import org.bukkit.entity.Fireball
-import org.bukkit.entity.Player
+import org.bukkit.entity.*
 import org.bukkit.event.Event
 import org.bukkit.event.entity.EntityChangeBlockEvent
 import org.bukkit.event.entity.ExplosionPrimeEvent
@@ -56,13 +53,13 @@ class Skill2 : SkillBase() {
             3 -> {
                 fallingBlockList.forEach { (t, u) ->
                     t.world.getNearbyEntities(t.location, 1.5, 1.5, 1.5).let {
-                        it.forEach entityLoop@ { entity ->
-                            if (entity !is FallingBlock && entity != u) {
+                        it.forEach { entity ->
+                            if (entity !is FallingBlock && entity != u && entity is LivingEntity) {
                                 u.playSound(u.location, Sound.ENTITY_ARROW_HIT_PLAYER, SoundCategory.MASTER, 1f, 1f)
                                 fallingBlockList.remove(t)
                                 t.remove()
-                                return@entityLoop
                                 entity.damage(3.0)
+                                return@let
                             }
                         }
 
