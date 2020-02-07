@@ -59,7 +59,10 @@ class Skill2 : SkillBase() {
                         it.forEach entityLoop@ { entity ->
                             if (entity !is FallingBlock && entity != u) {
                                 u.playSound(u.location, Sound.ENTITY_ARROW_HIT_PLAYER, SoundCategory.MASTER, 1f, 1f)
+                                fallingBlockList.remove(t)
+                                t.remove()
                                 return@entityLoop
+                                entity.damage(3.0)
                             }
                         }
 
