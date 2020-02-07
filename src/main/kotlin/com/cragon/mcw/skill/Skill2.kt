@@ -54,6 +54,14 @@ class Skill2 : SkillBase() {
                 }
             }
             3 -> {
+                fallingBlockList.forEach { (t, u) ->
+                    t.world.getNearbyEntities(t.location, 1.5, 1.5, 1.5).let {
+                        if (it.isNotEmpty()) {
+                            // it.toList()[0]
+                            u.playSound(u.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.MASTER, 1f, 1f)
+                        }
+                    }
+                }
             }
         }
     }
